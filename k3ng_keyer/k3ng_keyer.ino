@@ -9571,6 +9571,14 @@ void extra_button_pressed(boolean is_hold, boolean is_command_mode) {
   //     (always false when is_command_mode is true - command_mode() has no hold concept)
   //   is_command_mode: true if the button was pressed while in command_mode()
 
+  if (!is_command_mode) {
+    if (is_hold) {
+      ssd1306_toggle_display();
+    } else {
+      ssd1306_clear_display();
+    }
+  }
+
   #ifdef DEBUG_BUTTONS
   debug_serial_port->print(F("\nextra_button_pressed: button: "));
   debug_serial_port->print(EXTRA_BUTTON_INDEX);
