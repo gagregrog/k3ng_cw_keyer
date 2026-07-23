@@ -1,6 +1,14 @@
 
-#if defined(FEATURE_LCD_4BIT) || defined(FEATURE_LCD_8BIT) || defined(FEATURE_LCD_ADAFRUIT_I2C) || defined(FEATURE_LCD_ADAFRUIT_BACKPACK) || defined(FEATURE_LCD_YDv1) ||defined(FEATURE_LCD1602_N07DH) || defined(FEATURE_LCD_SAINSMART_I2C) || defined(FEATURE_LCD_FABO_PCF8574) || defined(FEATURE_LCD_MATHERTEL_PCF8574) || defined(FEATURE_LCD_HD44780) || defined(FEATURE_LCD_I2C_FDEBRABANDER) || defined(FEATURE_LCD_TWILIQUIDCRYSTAL) || defined(FEATURE_OLED_SSD1306)
+#if defined(FEATURE_LCD_4BIT) || defined(FEATURE_LCD_8BIT) || defined(FEATURE_LCD_ADAFRUIT_I2C) || defined(FEATURE_LCD_ADAFRUIT_BACKPACK) || defined(FEATURE_LCD_YDv1) ||defined(FEATURE_LCD1602_N07DH) || defined(FEATURE_LCD_SAINSMART_I2C) || defined(FEATURE_LCD_FABO_PCF8574) || defined(FEATURE_LCD_MATHERTEL_PCF8574) || defined(FEATURE_LCD_HD44780) || defined(FEATURE_LCD_I2C_FDEBRABANDER) || defined(FEATURE_LCD_TWILIQUIDCRYSTAL) || defined(FEATURE_OLED_SSD1306) || defined(FEATURE_LCD_HD44780_PINIO)
   #define FEATURE_DISPLAY
+#endif
+
+#ifdef FEATURE_DISPLAY
+  // Manual forward declaration: lcd_center_print_timed_wpm() is defined indented inside an
+  // #ifdef block further down in k3ng_keyer.ino, and is called earlier in the file. PlatformIO's
+  // .ino prototype scanner only detects function definitions that start at column 0, so it misses
+  // this one and needs this declaration.
+  void lcd_center_print_timed_wpm();
 #endif
 
 #if defined(FEATURE_COMMAND_LINE_INTERFACE_ON_SECONDARY_PORT) && !defined(FEATURE_COMMAND_LINE_INTERFACE)
@@ -26,8 +34,14 @@
 #endif
 
 #if defined(FEATURE_WEB_SERVER) || defined(FEATURE_INTERNET_LINK)
+#ifndef FEATURE_WIFI
   #define FEATURE_ETHERNET
 #endif
+#ifndef FEATURE_ETHERNET_WEB_LISTENER_PORT
+#define FEATURE_ETHERNET_WEB_LISTENER_PORT 80
+#endif  
+#endif
+
 
 #if defined(FEATURE_INTERNET_LINK)
   #define FEATURE_UDP

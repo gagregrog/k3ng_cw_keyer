@@ -2,16 +2,16 @@
 #ifndef keyer_pin_settings_h
 #define keyer_pin_settings_h
 
-#define paddle_left 53
-#define paddle_right 51
-#define tx_key_line_1 11       // (high = key down/tx on)
-#define tx_key_line_2 12
+#define paddle_left 32
+#define paddle_right 33
+#define tx_key_line_1 0       // (high = key down/tx on)
+#define tx_key_line_2 0
 #define tx_key_line_3 0
 #define tx_key_line_4 0
 #define tx_key_line_5 0
 #define tx_key_line_6 0
-#define sidetone_line 52         // connect a speaker for sidetone
-#define potentiometer A0        // Speed potentiometer (0 to 5 V) Use pot from 1k to 10k
+#define sidetone_line 26        // connect a speaker for sidetone
+#define potentiometer 34        // Speed potentiometer (0 to 5 V) Use pot from 1k to 10k
 #define ptt_tx_1 0              // PTT ("push to talk") lines
 #define ptt_tx_2 0              //   Can be used for keying fox transmitter, T/R switch, or keying slow boatanchors
 #define ptt_tx_3 0              //   These are optional - set to 0 if unused
@@ -24,10 +24,11 @@
 #define potentiometer_enable_pin 0  // if defined, the potentiometer will be enabled only when this pin is held low; set to 0 to ignore this pin
 
 #ifdef FEATURE_BUTTONS
-  #define analog_buttons_pin A1
-  #define command_mode_active_led 50
+  #define analog_buttons_pin 35
+  #define command_mode_active_led 18
 #endif //FEATURE_BUTTONS
 
+//#define PIN_LED 27
 /*
 FEATURE_SIDETONE_SWITCH
   Enabling this feature and an external toggle switch  adds switch control for playing cw sidetone.
@@ -41,7 +42,7 @@ FEATURE_SIDETONE_SWITCH
 
 
 //lcd pins
-#if defined(FEATURE_LCD_4BIT) || defined(FEATURE_LCD_8BIT) || defined(FEATURE_LCD_HD44780_PINIO)
+#if defined(FEATURE_LCD_4BIT) || defined(FEATURE_LCD_8BIT)
   #define lcd_rs A2
   #define lcd_enable 10  // pin 10 is used by Ethernet shield and will conflict with that
   #define lcd_d4 6
@@ -86,15 +87,15 @@ FEATURE_SIDETONE_SWITCH
   #define led_ring_le     A8 //4    //Latch
 #endif //FEATURE_LED_RING
 
-#define correct_answer_led 0
-#define wrong_answer_led 0
+#define correct_answer_led 16
+#define wrong_answer_led 17
 
 #ifdef FEATURE_PTT_INTERLOCK
   #define ptt_interlock 0  // this pin disables PTT and TX KEY
 #endif //FEATURE_PTT_INTERLOCK
 
 #ifdef FEATURE_STRAIGHT_KEY
-  #define pin_straight_key 52
+  #define pin_straight_key 25
 #endif //FEATURE_STRAIGHT_KEY
 
 // FEATURE_CW_DECODER & OPTION_CW_DECODER_GOERTZEL_AUDIO_DETECTOR
