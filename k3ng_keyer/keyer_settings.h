@@ -74,6 +74,7 @@
 #define serial_program_memory_buffer_size 500
 #define eeprom_write_time_ms 30000
 #define button_hold_threshold_ms 500  // press vs. hold classification in check_buttons()
+#define dit_hold_reset_count 10  // consecutive dits to hold (then release) to trigger FEATURE_DIT_HOLD_RESET
 
 #ifdef FEATURE_BUTTONS
   #define number_of_memory_buttons 3  // hardware memory buttons, not counting the command button or the extra button (if enabled)
