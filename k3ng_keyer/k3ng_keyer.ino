@@ -17735,6 +17735,7 @@ void program_memory(int memory_number)
     }
     lcd_print_string.concat(memory_number+1);
     lcd_center_print_timed(lcd_print_string, 0, default_display_msg_delay);
+    display_scroll_reset();
   #endif
 
   //send_dit();
@@ -17868,6 +17869,7 @@ void program_memory(int memory_number)
            boop();
            #ifdef FEATURE_DISPLAY
              lcd_center_print_timed(lcd_print_string, 0, default_display_msg_delay);
+             display_scroll_reset();
            #endif //FEATURE_DISPLAY
          }
        #endif
@@ -17939,6 +17941,7 @@ void program_memory(int memory_number)
 
   #ifdef FEATURE_DISPLAY
     lcd_center_print_timed("Done", 0, default_display_msg_delay);
+    display_scroll_reset();
   #endif
 
   #ifndef OPTION_SKIP_SAVED_MEMORY_PLAYBACK
