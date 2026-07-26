@@ -19,6 +19,7 @@
 // #define FEATURE_USB_KEYBOARD          // Use a USB keyboard to send code - Uncomment three lines in k3ng_keyer.ino (search for note_usb_uncomment_lines)
 // #define FEATURE_CW_COMPUTER_KEYBOARD  // Have an Arduino Due or Leonardo act as a USB HID (Human Interface Device) keyboard and use the paddle to "type" characters on the computer
 #define FEATURE_DEAD_OP_WATCHDOG
+#define FEATURE_DIT_HOLD_RESET         // hold the dit paddle for dit_hold_reset_count consecutive dits, then release it - clears the display during normal operation, or restarts the in-progress recording if inside program_memory() - see dit_hold_reset_count in keyer_settings.h
 #define FEATURE_AUTOSPACE
 #define FEATURE_FARNSWORTH
 // #define FEATURE_DL2SBA_BANKSWITCH       // Switch memory banks feature as described here: http://dl2sba.com/index.php?option=com_content&view=article&id=131:nanokeyer&catid=15:shack&Itemid=27#english
@@ -140,6 +141,7 @@
 // #define OPTION_PERSONALIZED_STARTUP_SCREEN        // displays a user defined string of characters on the second or fourth row of the screen during startup. 1602 display requires OPTION_DO_NOT_SAY_HI
 // #define OPTION_SWAP_PADDLE_PARAMETER_CHANGE_DIRECTION        // reverses the up/down direction when using the paddles to change the wpm or sidetone frequency
 #define OPTION_DISPLAY_MEMORY_CONTENTS_COMMAND_MODE
+#define OPTION_SKIP_SAVED_MEMORY_PLAYBACK // skips playback of the memory after recording it
 
 #define OPTION_BEACON_MODE_MEMORY_REPEAT_TIME        // to space out the repeated playing of memory 1 when in beacon mode
 #define OPTION_BEACON_MODE_PTT_TAIL_TIME             // adds the ptt tail time to each playing of memory 1 in beacon mode
