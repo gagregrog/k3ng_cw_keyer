@@ -9979,6 +9979,11 @@ void send_char(byte cw_char, byte omit_letterspace)
 
       case '=': send_the_dits_and_dahs("-...-");   break;
       case '/': send_the_dits_and_dahs("-..-.");   break;
+      case '%':                                                 // sent as the three characters 0/0
+        send_char('0', 0);
+        send_char('/', 0);
+        send_char('0', omit_letterspace);
+        return;
       case '*': send_the_dits_and_dahs("-...-.-"); break;
       case '.': send_the_dits_and_dahs(".-.-.-");  break;
       case ',': send_the_dits_and_dahs("--..--");  break;
@@ -15305,6 +15310,8 @@ void receive_transmit_echo_practice(PRIMARY_SERIAL_CLS * port_to_use, byte pract
 
     } // switch (practice_mode)
 
+    cw_to_send_to_user.replace("%", "0/0");                                          // "%" is shorthand for the three-character group 0/0
+
     loop2 = 1;
 
     while (loop2){
@@ -16102,6 +16109,8 @@ void serial_practice_interactive(PRIMARY_SERIAL_CLS * port_to_use,byte practice_
         #endif
         break;
     } //switch(practice_type)
+
+    cw_to_send_to_user.replace("%", "0/0");                                          // "%" is shorthand for the three-character group 0/0
 
     loop2 = 1;
 
